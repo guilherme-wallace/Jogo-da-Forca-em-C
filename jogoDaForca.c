@@ -12,6 +12,17 @@ void limparTela() {
     system("cls");
 }
 
+void mostraPalavra(char *palavra, char *acertos) {
+    printf("Palavra: ");
+    for (int i = 0; i < strlen(palavra); i++){
+        if (acertos[i]) {
+            printf("%c ", palavra[i]);
+        } else {
+            printf("_ ");
+        }
+    }
+}
+
 void initAcertos(char *acertos, int tamanho) {
     for (int i = 0; i < tamanho; i++) {
         acertos[i] = 0;
@@ -31,12 +42,18 @@ void forca() {
     getchar();
 
     limparTela();
-
     initAcertos(acertos, strlen(palavra));
 
     while (erros < maximoDeTentativas) {
         limparTela();
+        printf("Jogo Da forca\n\n");
+        mostraPalavra(palavra, acertos);
 
+        printf("Letras que você tentou: ");
+        for (int i = 0; i < tentativas; i++) {
+            printf("%c ", letrasTentadas[i]);
+        }
+        printf("\n");
     }
     
 }
