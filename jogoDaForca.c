@@ -49,6 +49,15 @@ int verificarAcerto(char letra, char *palavra, char *acertos) {
     return acertou;
 }
 
+int vitoria(char *acertos, int tamanho) {
+    for (int i = 0; i < tamanho; i++) {
+        if (!acertos[i]) {
+            return 0;
+        }
+    }
+    return 1;
+}
+
 void forca() {
     int maximoDeTentativas = 6, tentativas = 0, erros = 0;
     char palavra[100], acertos[52], letrasTentadas[52], letra;
@@ -85,6 +94,12 @@ void forca() {
 
         if (!verificaAcerto(letra, palavra, acertos)) {
             erros++;
+        }
+
+        if (vitoria(acertos, strlen(palavra))) {
+            limparTela();
+            printf ("VITÓRIA!! \n A palavra era '%s'. \n", palavra);
+            return;
         }
     }
     
