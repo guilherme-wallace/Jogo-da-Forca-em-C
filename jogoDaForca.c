@@ -38,6 +38,17 @@ int verificaLetra(char letra, char *letrasTentadas, int numeroDeTentativas) {
     return 0;
 }
 
+int verificarAcerto(char letra, char *palavra, char *acertos) {
+    int acertou = 0;
+    for (int i = 0; i < strlen(palavra); i++) {
+        if (tolower(palavra[i]) == letra && !acertos[i]) {
+            acertos[i] = 1;
+            acertou = 1;
+        }
+    }
+    return acertou;
+}
+
 void forca() {
     int maximoDeTentativas = 6, tentativas = 0, erros = 0;
     char palavra[100], acertos[52], letrasTentadas[52], letra;
@@ -68,6 +79,12 @@ void forca() {
             printf("\nVocê já tentou essa letra. Tente novamente.\n");
             getchar();
             continue;
+        }
+
+        letrasTentadas[tentativas++] = letra;
+
+        if (!verificaAcerto(letra, palavra, acertos)) {
+            erros++;
         }
     }
     
