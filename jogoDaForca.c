@@ -38,7 +38,7 @@ int verificaLetra(char letra, char *letrasTentadas, int numeroDeTentativas) {
     return 0;
 }
 
-int verificarAcerto(char letra, char *palavra, char *acertos) {
+int verificaAcerto(char letra, char *palavra, char *acertos) {
     int acertou = 0;
     for (int i = 0; i < strlen(palavra); i++) {
         if (tolower(palavra[i]) == letra && !acertos[i]) {
@@ -74,7 +74,7 @@ void forca() {
         printf("Jogo Da forca\n\n");
         mostraPalavra(palavra, acertos);
 
-        printf("Letras que você tentou: ");
+        printf("Letras que voce tentou: ");
         for (int i = 0; i < tentativas; i++) {
             printf("%c ", letrasTentadas[i]);
         }
@@ -85,7 +85,7 @@ void forca() {
         letra = tolower(letra);
 
         if (verificaLetra(letra, letrasTentadas, tentativas)) {
-            printf("\nVocê já tentou essa letra. Tente novamente.\n");
+            printf("\nVoce ja tentou essa letra. Tente novamente.\n");
             getchar();
             continue;
         }
@@ -98,7 +98,7 @@ void forca() {
 
         if (vitoria(acertos, strlen(palavra))) {
             limparTela();
-            printf ("VITÓRIA!! \n A palavra era '%s'. \n", palavra);
+            printf ("VITORIA!! \n A palavra era '%s'. \n", palavra);
             return;
         }
     }
