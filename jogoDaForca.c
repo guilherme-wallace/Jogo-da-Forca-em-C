@@ -103,6 +103,8 @@ void forca() {
         }
     }
     
+    limparTela();
+    printf("DERROTA!! \n A palavra era '%s'. \n", palavra);
 }
 
 int main() {
