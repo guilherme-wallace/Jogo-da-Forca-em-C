@@ -29,15 +29,20 @@ void initAcertos(char *acertos, int tamanho) {
     }
 }
 
-void forca() {
-    int maximoDeTentativas = 6;
-    char palavra[100];
-    char acertos[52];
-    char letrasTentadas[52];
-    int tentativas = 0;
-    int erros = 0;
+int verificaLetra(char letra, char *letrasTentadas, int numeroDeTentativas) {
+    for (int i = 0; i < numeroDeTentativas; i++) {
+        if (letrasTentadas[i] == letra) {
+            return 1;
+        }
+    }
+    return 0;
+}
 
-    printf("Informa a pavrada secreta: ");
+void forca() {
+    int maximoDeTentativas = 6, tentativas = 0, erros = 0;
+    char palavra[100], acertos[52], letrasTentadas[52], letra;
+
+    printf("Informe a pavrada secreta: ");
     scanf("%s", palavra);
     getchar();
 
@@ -54,6 +59,16 @@ void forca() {
             printf("%c ", letrasTentadas[i]);
         }
         printf("\n");
+        printf("Tentativas restantes: %d\n\n", maximoDeTentativas - erros);
+        printf("Informe uma letra: ");
+        scanf(" %c", &letra);
+        letra = tolower(letra);
+
+        if (verificaLetra(letra, letrasTentadas, tentativas)) {
+            printf("\nVocê já tentou essa letra. Tente novamente.\n");
+            getchar();
+            continue;
+        }
     }
     
 }
