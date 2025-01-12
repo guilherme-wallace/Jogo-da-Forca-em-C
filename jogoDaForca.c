@@ -12,6 +12,11 @@ void limparTela() {
     system("cls");
 }
 
+void initAcertos(char *acertos, int tamanho) {
+    for (int i = 0; i < tamanho; i++) {
+        acertos[i] = 0;
+    }
+}
 
 void forca() {
     int maximoDeTentativas = 6;
