@@ -62,7 +62,7 @@ void forca() {
     int maximoDeTentativas = 6, tentativas = 0, erros = 0;
     char palavra[100], acertos[52], letrasTentadas[52], letra;
 
-    printf("Informe a pavrada secreta: ");
+    printf("Informe a palavra secreta: ");
     scanf("%s", palavra);
     getchar();
 
